@@ -1,0 +1,428 @@
+/*
+	Elite Quiz - WRTeam.in 
+	WRTeam Developers
+*/
+
+API URL -->>  
+	http://elitequiz.wrteam.me/Api/{METHOD_NAME} 
+
+API methods
+-------------------------
+1. user_signup
+2. get_user_by_id
+3. update_fcm_id
+4. update_profile
+5. upload_profile_image
+6. get_languages
+7. get_categories
+8. get_subcategory_by_maincategory
+9. get_questions
+10. get_questions_by_level
+11. get_questions_by_type
+12. get_questions_for_self_challenge
+13. get_random_questions
+14. get_random_questions_for_computer
+15. report_question
+16. get_daily_leaderboard
+17. get_monthly_leaderboard
+18. get_globle_leaderboard
+19. get_users_statistics
+20. get_battle_statistics
+21. get_settings
+22. get_system_configurations
+23. get_notifications
+24. get_level_data 
+25. set_bookmark
+26. get_bookmark
+27. get_daily_quiz
+28. set_user_coin_score
+29. get_user_coin_score
+30. get_contest
+31. get_questions_by_contest
+32. get_contest_leaderboard
+33. create_room
+34. get_question_by_room_id
+35. get_public_room
+36. invite_friend
+37. get_fun_n_learn
+38. get_fun_n_learn_questions
+39. get_guess_the_word
+40. get_audio_questions
+41. get_user_badges
+42. get_exam_module
+43. get_exam_module_questions
+44. set_exam_module_result
+45. set_payment_request
+46. delete_user_account
+47. get_tracker_data
+48. get_payment_request
+49. check_user_exists
+50. get_maths_questions
+51. get_web_settings (for web)
+52. get_coin_store_data (for APP)
+53. unlock_premium_category
+54. check_daily_ads_status
+55. update_daily_ads_counter
+56. delete_pending_payment_request
+57. set_user_in_app
+58. get_system_language_list
+59. get_system_language_json
+60. get_multi_match_questions
+61. get_multi_match_questions_by_type
+62. get_multi_match_questions_by_level
+63. multi_match_report_question
+64. get_multi_match_level_data
+65. set_quiz_coin_score
+
+
+------------------------------------------
+What parameters to be Passed?  See here >>
+------------------------------------------
+
+Use POST method to pass the parameters
+
+1. user_signup
+a. For Sign Up:-
+	firebase_id: xxxxxxxxxxxxxxxxxxxxx //Firebase ID
+	type:email / gmail / fb / mobile / apple
+	name:Abc Xyz
+	email:abc@yahoo.com
+	profile:Image URL
+	mobile: xxxxxxxxxxxx
+	fcm_id:xyz123654
+	web_fcm_id:xyz123654
+	friends_code:xyz123654
+	status:1   // 1 - Active & 0 Deactive
+	app_language:english //optional
+	web_language:english //optional
+
+	b. For Login :- 
+	firebase_id: xxxxxxxxxxxxxxxxxxxxx  //Firebase ID
+	type:email / gmail / fb / mobile / apple
+
+	
+2. get_user_by_id
+
+3. update_fcm_id
+    Optionals :-
+	fcm_id:xyzCode
+	web_fcm_id:xyzCode
+
+4. update_profile
+	
+	Optionals :-
+	email:abc@yahoo.com
+	name:Abc
+	mobile: xxxxxxxxxxxx
+	remove_ads : 0 - no , 1 - yes
+	app_language : english
+	web_language : english
+
+
+5. upload_profile_image
+	image: image file
+
+6. get_languages
+	id:1    // {optional}
+
+7. get_categories
+	type:1 
+	//1-quiz_zone, 2-fun_n_learn, 3-guess_the_word, 4-audio_question, 5-maths_question ,6-multi_match
+	language_id:1   //{optional}
+	id:31 OR slug   //{optional}
+	sub_type : 1 // {optional} set when type=1 // 1 - self challenge, 2 -  battle, 3 -  group battle.
+
+8. get_subcategory_by_maincategory
+	category:31 OR Slug
+	
+       
+9. get_questions
+	type:category or subcategory
+	id:1 {if type:category then id:category id}
+
+10. get_questions_by_level
+	level:2
+	category:5 {or}
+	subcategory:9
+	language_id:2   // {optional}
+
+11. get_questions_by_type
+	type:1  //1=normal ,2 = true/false
+	limit:10
+	language_id:2   // {optional} 
+
+12. get_questions_for_self_challenge
+	category:1 {or}
+	subcategory:1
+	limit:10
+	language_id:2   // {optional}
+
+13. get_random_questions
+	match_id:your_match_id
+	language_id:2   //{optional}
+	category:1      // required if battle category enable form panel
+	destroy_match:0 / 1     // 0 - don't destroy | 1 - destroy the battle
+	random 				//set param if random battle quiz
+	entry_coin:1
+
+14. get_random_questions_for_computer
+	language_id:2   //{optional}
+	category:1      // required if battle category enable form panel
+    	
+15. report_question
+	question_id:115
+	message: Any reporting message
+
+16. get_daily_leaderboard
+	offset:0         // {optional} - starting position
+	limit:10         // {optional} - Number of records per page		
+
+17. get_monthly_leaderboard
+	offset:0         // {optional} - starting position
+	limit:10         // {optional} - Number of records per page
+
+18. get_globle_leaderboard
+	offset:0         // {optional} - starting position
+	limit:10  	 // {optional} - Number of records per page
+
+19. get_users_statistics
+
+20. get_battle_statistics
+	sort:id / is_drawn / winner_id // {optional} 
+	order:DESC / ASC // {optional} 
+	offset:0    // {optional} - Starting position
+	limit:20    // {optional} - number of records per page
+
+21. get_settings
+	type:about_us / privacy_policy / terms_conditions / contact_us / instructions / app_name
+
+22. get_system_configurations
+
+23. get_notifications
+	sort:id / users / type // {optional} 
+	order:DESC / ASC // {optional} 
+	offset:0    // {optional} - Starting position
+	limit:20    // {optional} - number of records per page
+
+24. get_level_data
+	category:1
+	subcategory:2
+
+25. set_bookmark
+	question_id:11
+	status:1   //1-bookmark,0-unmark
+	type:1     //1-quiz_zone, 3-guess_the_word, 4-audio_question, 5-maths_question
+
+26. get_bookmark
+	type:1     //1-quiz_zone, 3-guess_the_word, 4-audio_question, 5-maths_question
+
+27. get_daily_quiz
+	language_id:2   // {optional}
+	timezone:Asia/Kolkata
+    gmt_format:+5:30
+
+28. set_user_coin_score
+	coins:10      //if deduct coin than set with minus sign -2
+	score:2
+	type:dashing_debut  // (dashing_debut, combat_winner, clash_winner, most_wanted_winner, ultimate_player, quiz_warrior, super_sonic, flashback, brainiac, big_thing, elite, thirsty, power_elite, sharing_caring, streak)
+	title:title for coin update
+
+29. get_user_coin_score
+
+30. get_contest
+	language_id // optional
+	timezone:Asia/Kolkata
+    gmt_format:+5:30
+
+31. get_questions_by_contest
+      contest_id:5
+
+32. get_contest_leaderboard
+	contest_id:1
+
+33. create_room
+	room_id:123
+	room_type:public    // private or public
+	language_id:2       //{optional}
+	category:1          // required if room category enable form panel
+	entry_coin:1
+
+34. get_question_by_room_id
+	room_id:123
+
+35. get_public_room
+
+36. invite_friend
+	room_id:1
+	invited_id:2
+	room_key:your room key
+
+37. get_fun_n_learn
+	language_id:1   //{optional}
+	id:31   //{optional}
+	type:category or subcategory
+	type_id:1 {if type:category then type_id:category id}
+
+
+38. get_fun_n_learn_questions
+	fun_n_learn_id:1
+
+39. get_guess_the_word
+	language_id:1   //{optional}
+	type:category or subcategory
+	type_id:1 {if type:category then type_id:category id}
+
+40. get_audio_questions
+	type:category or subcategory
+	type_id:1 {if type:category then type_id:category id}
+
+41. get_user_badges
+
+42. get_exam_module
+	language_id:1   //{optional}
+	type:1          //1-today, 2-completed
+	offset:0    // {optional} - Starting position
+	limit:10    // {optional} - number of records per page
+	timezone:Asia/Kolkata
+    gmt_format:+5:30
+
+43. get_exam_module_questions
+	Exam_module_id:1
+
+44. set_exam_module_result      (status: 1-Not in Exam, 2-In exam, 3-Completed)
+	exam_module_id:1
+	total_duration:10
+	obtained_marks:10                                                                                                                                                                                                                                     statistics:[{"mark":"1","correct_answer":"2","incorrect":"3"},{"mark":"2","correct_answer":"2","incorrect":"3"}]
+	rules_violated:1
+	captured_question_ids:[]        //Array of String
+
+45. set_payment_request
+	payment_type:paypal
+	payment_address:abc@gmail.com (array)
+	payment_amount:10
+	coin_used:100
+	details:details
+
+46. delete_user_account
+
+47. get_tracker_data
+	offset:0    // {optional} - Starting position
+	limit:10    // {optional} - number of records per page
+	type:1 or 2 // 1 - Income, 2 - lose, if not passed then all data will get
+
+48. get_payment_request
+	offset:0    // {optional} - Starting position
+	limit:10    // {optional} - number of records per page
+
+49. check_user_exists
+	firebase_id:mf5FQ7MtNwdguEDMlTLNarkj4AZ2 //Firebase ID
+
+50. get_maths_questions
+	type:category or subcategory
+	type_id:1 {if type:category then type_id:category id}
+
+51. get_web_settings (for web)
+
+52. get_coin_store_data
+
+53. unlock_premium_category (Token Required)
+	cagtegory (Required)
+
+54. check_daily_ads_status
+	access key
+55. update_daily_ads_counter
+	access key
+56. delete_pending_payment_request
+		payment_id
+57. set_user_in_app
+		purchase_token //after purchase get token
+		pay_from  //1=android,2=ios
+		product_id  //5_consumable_coin
+58. get_system_language_list
+		from  //1=app,2=web
+59. get_system_language_json
+		from  //1=app,2=web
+		language  //set name param from get_system_language_list
+	
+60. get_multi_match_questions
+	type:category or subcategory
+	id:1 {if type:category then id:category id}
+
+61. get_multi_match_questions_by_type
+	question_type:1  //1=normal ,2 = true/false
+	language_id:2   // {optional} 
+
+62. get_multi_match_questions_by_level
+	level:2
+	category:5 {or}
+	subcategory:9
+	language_id:2   // {optional}
+
+63. multi_match_report_question
+	question_id:1
+	message:test
+
+64. get_multi_match_level_data
+    category:5 {or}
+	category_slug:slug
+
+65. set_quiz_coin_score
+    quiz_type:1  //1=quiz_zone, 1.1=daily_quiz, 1.2=true_false, 1.3=randim_battle, 1.4=one_vs_one_battle, 1.5=group_battle, 2=fun_n_learn, 3=guess_the_word, 4=audio_quiz, 5=maths_quiz, 6=multi_match
+	play_questions: //all time set
+		when type=1, 1.1, 1.2, 2, 4, 5
+			[{"id":"4","answer":"a"},{"id":"20","answer":"d"},{"id":"85","answer":"b"}]
+		when type=3
+			[{"id":"2","answer":"VIRAT KOHLI"},{"id":"5","answer":"CRICKET"}]
+		when type=6
+			[{"id":"24","answer":"a,b"},{"id":"24","answer":"a,b,d,c,e"},{"id":"28","answer":"a,b"}]
+		when type=1.3, 1.4, 1.5
+			{"user1_id": "1","user2_id": "2","user1_data": [{"id": "876","answer": "a","second": "2"},{"id": "963","answer": "c","second": "1"}],"user2_data": [{"id": "876","answer": "a","second": "2"},{"id": "963","answer": "a","second": "1"}]}
+	category: //when quiz_type=1,2,3,4,5,6
+	subcategory: //when quiz_type=1,2,3,4,5,6
+	match_id: //when quiz_type=1.3, 1.4, 1.5
+	is_bot: //when quiz_type=1.3
+	no_of_hint_used: //when quiz_type=3
+	total_play_time: //when quiz_type=3
+	joined_users_count: //when quiz_type=1.5
+	lifeline: //when quiz_type=1
+
+Status And their responses :- 
+
+101-invalid access key
+102-data not found
+103-please fill all the data and submit
+104-user registered successfully
+105-successfully logged in
+106-profile updated successfully
+107-file upload fail
+108-battle destroyed successfully
+109-report submitted successfully
+110-data insert successfully
+111-data update successfully
+112-daily quiz already played
+113-no matches played. play the match now
+114-no upcoming contest to show. soon we will be announcing the one
+115-no contest is available to play right now. come back again
+116-you have not played any contest yet. go and play the contest once there is a live contest
+117-contest you have played
+118-play & win exciting prizes
+119-room is already created
+120-room create successfully
+121-room destroyed successfully
+122-something wrong
+123-notification sent successfully
+124-invalid hash
+125-unauthorized access not allowed
+126-your account has been deactivated! please contact admin
+127-You have already made a payment request. Please wait for 48 hours after you made the previous request.
+128-already played
+129-unauthorized access
+130-user exists
+131-user not exists
+132-Data Exists
+133-User’s Daily Ads Limit Achieved
+134-User Can continue
+135-Payment Request is not in pending state
+136-already coin redeem
+
+
